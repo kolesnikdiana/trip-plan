@@ -1,0 +1,20 @@
+.page-content {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #1E5799;
+  padding: 20px;
+}
+
+.header .title {
+  margin: 0;
+
+  text-align: center;
+  color: white;
+}
+
+.map-view-link {
+  background: red;
+}

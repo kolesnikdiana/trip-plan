@@ -1,0 +1,75 @@
+@import 'widjets/filter-section.css';
+
+.home-page .add-item-field {
+  padding: 20px 0;
+
+  position: relative;
+
+  background-color: #EEE;
+}
+
+/*Input styles*/
+.home-page .input-container {
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 70%;
+
+  position: relative;
+}
+.home-page .add-item-field input {
+  padding: 0 40px 0 20px;
+  display: block;
+  height: 30px;
+  width: calc(100% - 60px);
+
+  border-width: 0;
+  color: #666;
+}
+
+.home-page .add-item-field input.incorrect {
+  outline: #96261E auto 5px;
+  outline-offset: -2px;
+}
+
+.home-page .add-item-field input:focus,
+.home-page .add-item-field input:active {
+  outline: none;
+  color: #000;
+}
+
+/*Button styles*/
+.home-page .add-item-field button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background-color: #1E5799;
+  border-radius: 50%;
+  border-width: 0;
+}
+.home-page .add-item-field button::after,
+.home-page .add-item-field button::before {
+  content: '';
+  display: block;
+  height: 50%;
+  width: 3px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #FFF;
+}
+.home-page .add-item-field button::before {
+  height: 3px;
+  width: 50%;
+}
+.home-page .add-item-field button:hover {
+  cursor: pointer;
+}

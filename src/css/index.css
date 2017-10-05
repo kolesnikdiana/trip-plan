@@ -1,0 +1,21 @@
+@import "./reset.css";
+@import "./widjets/checkbox.css";
+
+body {
+  font-family: sans-serif;
+}
+
+button:focus,
+button:active,
+a:focus,
+a:active {
+  outline: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  user-select: none;
+}

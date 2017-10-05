@@ -1,0 +1,43 @@
+/* Checkbox common styles */
+input[type=checkbox] {
+  display: none;
+}
+input[type=checkbox]:hover {
+  cursor: pointer;
+}
+input[type=checkbox] + label {
+  padding: 0 5px 0 25px;
+  position: relative;
+}
+input[type=checkbox] + label:hover {
+  cursor: pointer;
+}
+input[type=checkbox] + label::before,
+.filter-section input[type=checkbox] + label::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-52%);
+
+  border-radius: 10px;
+  border: 1px solid;
+}
+input[type=checkbox] + label::before {
+  background-color: #FFF;
+  border-color: #888;
+}
+
+/* To do list*/
+.to-do-list input[type=checkbox]:checked + label::before {
+  background-color: #C67227;
+  border-color: #C67227;
+}
+
+.to-do-list input[type=checkbox]:checked + label {
+  color: #666;
+}

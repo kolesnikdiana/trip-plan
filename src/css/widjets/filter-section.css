@@ -1,0 +1,28 @@
+/* Filter section */
+.filter-section {
+  margin: auto;
+  padding: 0 15% 10px;
+
+  background-color: #EEE;
+}
+.filter-container {
+  display: inline-block;
+  margin: 0 30px 10px 0;
+}
+
+.filter-section input[type=checkbox] + label::after {
+  background-color: #96261E;
+  border-color: #96261E;
+}
+.filter-section input[type=checkbox] + label::before {
+  width: 20px;
+}
+.filter-section input[type=checkbox]:not(:checked) + label {
+  color: #666;
+}
+.filter-section input[type=checkbox]:checked + label::after {
+  left: 10px;
+
+  background-color: #3C891B;
+  border-color: #3C891B;
+}
