@@ -33,11 +33,13 @@ input[type=checkbox] + label::before {
 }
 
 /* To do list*/
+.to-do-list .ticked label::before,
 .to-do-list input[type=checkbox]:checked + label::before {
   background-color: #C67227;
   border-color: #C67227;
 }
 
+.to-do-list .ticked label,
 .to-do-list input[type=checkbox]:checked + label {
   color: #666;
 }

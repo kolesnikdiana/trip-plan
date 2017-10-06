@@ -35,3 +35,7 @@ a::after {
 label {
   user-select: none;
 }
+
+.warning {
+  color: #96261E;
+}

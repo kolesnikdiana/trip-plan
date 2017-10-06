@@ -12,7 +12,11 @@ export class Home extends Component {
     this.state = {
       newPlace: '',
       isValid: true,
-      visited: []
+      visited: [1],
+      filterValues: {
+        showVisited: true,
+        showUnvisited: true
+      }
     };
   }
 
@@ -51,6 +55,12 @@ export class Home extends Component {
     });
   };
 
+  onFilterChange = (id, isTurnedOn) => {
+    this.setState({
+      filterValues: {...this.state.filterValues, [id]: isTurnedOn}
+    });
+  };
+
   render() {
     return (
       <div className="home-page">
@@ -59,13 +69,15 @@ export class Home extends Component {
                  onInputChange={this.onInputChange}
                  onFocus={this.validate}
                  onItemAdd={this.onItemAdd}/>
-        <Filter/>
+        <Filter cities={CITIES}
+                filterValues={this.state.filterValues}
+                visited={this.state.visited}
+                onFilterChange={this.onFilterChange}/>
         <div className="page-content">
-          <CitiesList cities={CITIES} onTick={this.onTick} />
-          <ul>test info (visited list): {this.state.visited.length ? this.state.visited.map((id) => {
-            var el = CITIES.find((el) => el.id === parseInt(id, 10));
-            return (<li key={el.id}>{el.name}</li>);
-          }) : 'no elements'}</ul>
+          <CitiesList cities={CITIES}
+                      onTick={this.onTick}
+                      showCities={this.state.filterValues}
+                      visitedList={this.state.visited}/>
         </div>
       </div>
     );
