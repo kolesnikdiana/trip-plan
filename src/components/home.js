@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import {CitiesList} from '../cities/cities-list';
-import {AddItem} from './add-item';
-import {Filter} from './filter';
-import {CITIES} from '../../data';
+import {CitiesList} from './cities/cities-list';
+import {AddItem} from './widgets/add-item';
+import {Filter} from './widgets/filter';
+import {CITIES} from '../data';
 
-import '../../css/components/home.css';
+import '../css/components/home.css';
 
 export class Home extends Component {
   constructor(props){
     super(props);
     this.state = {
       newPlace: '',
-      isValid: true
+      isValid: true,
+      visited: []
     };
   }
 
@@ -22,9 +23,9 @@ export class Home extends Component {
   };
 
   validate = () => {
-    this.setState((prevState) => ({
+    this.setState({
       isValid: true
-    }));
+    });
   };
 
   onItemAdd = () => {
@@ -43,6 +44,13 @@ export class Home extends Component {
     this.setState({newPlace: ''});
   };
 
+  onTick = (id, isChecked) => {
+    this.setState(({visited: prevVisited}) => {
+      return !isChecked ? { visited: prevVisited.filter((elId) => (elId !== id) ) }
+            : { visited: [...prevVisited, id] };
+    });
+  };
+
   render() {
     return (
       <div className="home-page">
@@ -53,7 +61,11 @@ export class Home extends Component {
                  onItemAdd={this.onItemAdd}/>
         <Filter/>
         <div className="page-content">
-          <CitiesList cities={CITIES} />
+          <CitiesList cities={CITIES} onTick={this.onTick} />
+          <ul>test info (visited list): {this.state.visited.length ? this.state.visited.map((id) => {
+            var el = CITIES.find((el) => el.id === parseInt(id, 10));
+            return (<li key={el.id}>{el.name}</li>);
+          }) : 'no elements'}</ul>
         </div>
       </div>
     );

@@ -21,3 +21,8 @@
 
   background-color: #EEE;
 }
+
+.map-view-link {
+  position: absolute;
+  right: 0;
+}
