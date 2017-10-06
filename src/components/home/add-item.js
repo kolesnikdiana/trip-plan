@@ -3,22 +3,13 @@ import React, { Component } from 'react';
 export class AddItem extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
   }
 
-  handleFocus() {
-    this.props.onFocus();
-  }
+  handleFocus = () => ( this.props.onFocus() );
 
-  handleChange(e) {
-    this.props.onInputChange(e.target.value);
-  }
+  handleChange = (e) => ( this.props.onInputChange(e.target.value) );
 
-  handleClick(e) {
-    this.props.onItemAdd(e);
-  }
+  handleClick = (e) => ( this.props.onItemAdd(e) );
 
   render() {
     return (
