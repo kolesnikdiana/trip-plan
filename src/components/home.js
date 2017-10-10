@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import {CitiesList} from './cities/cities-list';
-import {AddItem} from './widgets/add-item';
-import {Filter} from './widgets/filter';
-import {CITIES} from '../data';
+import CitiesList from './cities-list';
+import AddItem from './add-item';
+import Filter from './filter';
 
 import '../css/components/home.css';
 
-export class Home extends Component {
-  constructor(props){
+class Home extends Component {
+  constructor(props) {
     super(props);
     this.state = {
       newPlace: '',
-      isValid: true,
-      visited: [1],
+      visited: ['1'],
       filterValues: {
         showVisited: true,
-        showUnvisited: true
-      }
+        showUnvisited: true,
+      },
     };
   }
 
-  onInputChange = (value) => {
+  onInputChange = (e) => {
     this.setState({
-      newPlace: value
+      newPlace: e.target.value
     });
   };
 
@@ -33,11 +31,8 @@ export class Home extends Component {
   };
 
   onItemAdd = () => {
-    if(this.state.newPlace.trim().length) {
-      CITIES.push({
-        id: CITIES.length + 1,
-        name: this.state.newPlace
-      });
+    if (this.state.newPlace.trim().length) {
+      this.props.addCity(this.state.newPlace);
     }
     else {
       this.setState({
@@ -48,38 +43,59 @@ export class Home extends Component {
     this.setState({newPlace: ''});
   };
 
-  onTick = (id, isChecked) => {
+  onTick = (e) => {
+    const input = e.target;
     this.setState(({visited: prevVisited}) => {
-      return !isChecked ? { visited: prevVisited.filter((elId) => (elId !== id) ) }
-            : { visited: [...prevVisited, id] };
+      return !input.checked ? {visited: prevVisited.filter((elId) => (elId !== input.id))}
+        : {visited: [...prevVisited, input.id]};
     });
   };
 
-  onFilterChange = (id, isTurnedOn) => {
+  onFilterChange = (e) => {
+    const input = e.target;
     this.setState({
-      filterValues: {...this.state.filterValues, [id]: isTurnedOn}
+      filterValues: {...this.state.filterValues, [input.id]: input.checked}
     });
   };
 
   render() {
     return (
-      <div className="home-page">
-        <AddItem isValid={this.state.isValid}
-                 inputValue={this.state.newPlace}
-                 onInputChange={this.onInputChange}
-                 onFocus={this.validate}
-                 onItemAdd={this.onItemAdd}/>
-        <Filter cities={CITIES}
-                filterValues={this.state.filterValues}
-                visited={this.state.visited}
-                onFilterChange={this.onFilterChange}/>
-        <div className="page-content">
-          <CitiesList cities={CITIES}
-                      onTick={this.onTick}
-                      showCities={this.state.filterValues}
-                      visitedList={this.state.visited}/>
+      <div>
+
+        <AddItem
+          isValid={this.state.isValid}
+          inputValue={this.state.newPlace}
+          onInputChange={this.onInputChange}
+          onFocus={this.validate}
+          onItemAdd={this.onItemAdd}
+        />
+
+        <div className="filter-section">
+          <Filter
+            label="showVisited"
+            filterOn={this.state.filterValues.showVisited}
+            onFilterChange={this.onFilterChange}
+          />
+
+          <Filter
+            label="showUnvisited"
+            filterOn={this.state.filterValues.showUnvisited}
+            onFilterChange={this.onFilterChange}
+          />
         </div>
+
+        <div className="app-root__page-content">
+          <CitiesList
+            cities={this.props.cities}
+            onTick={this.onTick}
+            showCities={this.state.filterValues}
+            visitedList={this.state.visited}
+          />
+        </div>
+
       </div>
     );
   }
 }
+
+export default Home;

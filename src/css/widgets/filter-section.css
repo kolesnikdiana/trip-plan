@@ -5,22 +5,22 @@
 
   background-color: #EEE;
 }
-.filter-container {
+.filter-section__checkbox-container {
   display: inline-block;
   margin: 0 30px 10px 0;
 }
 
-.filter-section input[type=checkbox] + label::after {
+.checkbox_theme_trigger {
+  color: #666;
+}
+.checkbox_theme_trigger::after {
   background-color: #96261E;
   border-color: #96261E;
 }
-.filter-section input[type=checkbox] + label::before {
+.checkbox_theme_trigger::before {
   width: 20px;
 }
-.filter-section input[type=checkbox]:not(:checked) + label {
-  color: #666;
-}
-.filter-section input[type=checkbox]:checked + label::after {
+.checkbox_theme_trigger_checked::after {
   left: 10px;
 
   background-color: #3C891B;

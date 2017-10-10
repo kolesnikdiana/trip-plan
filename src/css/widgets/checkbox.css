@@ -1,19 +1,16 @@
 /* Checkbox common styles */
-input[type=checkbox] {
+input[type="checkbox"] {
   display: none;
 }
-input[type=checkbox]:hover {
-  cursor: pointer;
-}
-input[type=checkbox] + label {
+.checkbox {
   padding: 0 5px 0 25px;
   position: relative;
 }
-input[type=checkbox] + label:hover {
+.checkbox:hover {
   cursor: pointer;
 }
-input[type=checkbox] + label::before,
-.filter-section input[type=checkbox] + label::after {
+.checkbox::before,
+.checkbox_theme_trigger::after {
   content: '';
   display: inline-block;
   width: 10px;
@@ -27,19 +24,17 @@ input[type=checkbox] + label::before,
   border-radius: 10px;
   border: 1px solid;
 }
-input[type=checkbox] + label::before {
+.checkbox::before {
   background-color: #FFF;
   border-color: #888;
 }
 
 /* To do list*/
-.to-do-list .ticked label::before,
-.to-do-list input[type=checkbox]:checked + label::before {
+.checkbox_theme_default_checked::before {
   background-color: #C67227;
   border-color: #C67227;
 }
 
-.to-do-list .ticked label,
-.to-do-list input[type=checkbox]:checked + label {
+.checkbox_theme_default_checked {
   color: #666;
 }

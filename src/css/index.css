@@ -8,8 +8,10 @@ body {
 button:focus,
 button:active,
 a:focus,
-a:active {
-  outline: 0;
+a:active,
+input:focus,
+input:active {
+  outline: none;
 }
 
 a {
@@ -30,6 +32,11 @@ a::after {
   left: 0;
 
   background-color: #154584;
+}
+
+input:focus,
+input:active {
+  color: #000;
 }
 
 label {

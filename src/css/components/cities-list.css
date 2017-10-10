@@ -2,14 +2,14 @@
   padding: 0 15%;
 }
 
-.cities-list li {
+.cities-list__city {
   margin-top: 20px;
   padding-bottom: 20px;
 
   position: relative;
 }
 
-.cities-list li::after {
+.cities-list__city::after {
   content: '';
 
   display: block;
@@ -22,7 +22,7 @@
   background-color: #EEE;
 }
 
-.map-view-link {
+.cities-list__map-view-link {
   position: absolute;
   right: 0;
 }
