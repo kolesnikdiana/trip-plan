@@ -12,14 +12,14 @@ class App extends Component {
         { id: '3', name: 'Minsk' },
         { id: '41', name: 'Barcelona' },
         { id: '5', name: 'Tokyo' },
-        { id: '6', name: 'Beijing' },
-      ],
+        { id: '6', name: 'Beijing' }
+      ]
     };
   }
 
   addCity = (name) => (
     this.state.cities.push({
-      id: this.state.cities.length + 1,
+      id: (this.state.cities.length + 1).toString(),
       name: name
     })
   );
@@ -32,7 +32,7 @@ class App extends Component {
         </div>
         <Home
           cities={this.state.cities}
-          addCity={this.addCity} />
+          addCity={this.addCity}/>
       </div>
     );
   }

@@ -28,12 +28,12 @@ AddItem.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
   inputValue: PropTypes.string,
-  isValid: PropTypes.bool,
+  isValid: PropTypes.bool
 };
 
 AddItem.defaultProps = {
   isValid: true,
-  inputValue: '',
+  inputValue: ''
 };
 
 export default AddItem;

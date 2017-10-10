@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CitiesList from './cities-list';
 import AddItem from './add-item';
 import Filter from './filter';
@@ -13,8 +14,8 @@ class Home extends Component {
       visited: ['1'],
       filterValues: {
         showVisited: true,
-        showUnvisited: true,
-      },
+        showUnvisited: true
+      }
     };
   }
 
@@ -40,21 +41,21 @@ class Home extends Component {
       });
     }
 
-    this.setState({newPlace: ''});
+    this.setState({ newPlace: '' });
   };
 
   onTick = (e) => {
     const input = e.target;
-    this.setState(({visited: prevVisited}) => {
-      return !input.checked ? {visited: prevVisited.filter((elId) => (elId !== input.id))}
-        : {visited: [...prevVisited, input.id]};
+    this.setState(({ visited: prevVisited }) => {
+      return !input.checked ? { visited: prevVisited.filter((elId) => (elId !== input.id)) }
+        : { visited: [...prevVisited, input.id] };
     });
   };
 
   onFilterChange = (e) => {
     const input = e.target;
     this.setState({
-      filterValues: {...this.state.filterValues, [input.id]: input.checked}
+      filterValues: { ...this.state.filterValues, [input.id]: input.checked }
     });
   };
 
@@ -97,5 +98,17 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.object),
+  addCity: PropTypes.func.isRequired
+};
+
+Home.defaultProps = {
+  cities: [
+    { id: '1', name: 'London' },
+    { id: '2', name: 'Paris' }
+  ]
+};
 
 export default Home;

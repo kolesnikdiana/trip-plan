@@ -3,7 +3,8 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-boolean-value": [0, { "always": ["personal"] }],
-    "object-curly-newline": ["error", { "multiline": true, "minProperties": 7 }]
+    "object-curly-newline": ["error", { "multiline": true, "minProperties": 7 }],
+    "comma-dangle": 0
   },
   "env": {
     "es6": true,
