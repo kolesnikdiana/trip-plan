@@ -25,12 +25,6 @@ class Home extends Component {
     });
   };
 
-  validate = () => {
-    this.setState({
-      isValid: true
-    });
-  };
-
   onItemAdd = () => {
     if (this.state.newPlace.trim().length) {
       this.props.addCity(this.state.newPlace);
@@ -56,6 +50,12 @@ class Home extends Component {
     const input = e.target;
     this.setState({
       filterValues: { ...this.state.filterValues, [input.id]: input.checked }
+    });
+  };
+
+  validate = () => {
+    this.setState({
+      isValid: true
     });
   };
 

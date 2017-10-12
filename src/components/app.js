@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './home';
+
 import '../css/components/app.css';
 
 class App extends Component {
@@ -17,22 +18,26 @@ class App extends Component {
     };
   }
 
-  addCity = (name) => (
+  addCity = (name) => {
     this.state.cities.push({
       id: (this.state.cities.length + 1).toString(),
-      name: name
-    })
-  );
+      name
+    });
+  };
 
   render() {
     return (
       <div className="app-root">
+
         <div className="header app-root__header">
           <h1 className="app-root__title">TripPlan</h1>
         </div>
+
         <Home
           cities={this.state.cities}
-          addCity={this.addCity}/>
+          addCity={this.addCity}
+        />
+
       </div>
     );
   }
