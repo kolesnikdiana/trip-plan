@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CityView from './city-view';
+import CityView from '../city-view';
 
-import '../css/components/cities-list.css';
+import './cities-list.css';
 
 const CitiesList = ({ cities, onTick: handleTick, showCities, visitedList }) => {
   // Case: both filters are turned off

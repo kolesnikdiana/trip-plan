@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CitiesList from './cities-list';
-import AddItem from './add-item';
-import Filter from './filter';
 
-import '../css/components/home.css';
+import CitiesList from '../../components/cities-list';
+import AddItem from '../../components/add-item';
+import FilterSection from '../../components/filter-section';
 
 class Home extends Component {
   constructor(props) {
@@ -71,19 +70,10 @@ class Home extends Component {
           onItemAdd={this.onItemAdd}
         />
 
-        <div className="filter-section">
-          <Filter
-            label="showVisited"
-            filterOn={this.state.filterValues.showVisited}
-            onFilterChange={this.onFilterChange}
-          />
-
-          <Filter
-            label="showUnvisited"
-            filterOn={this.state.filterValues.showUnvisited}
-            onFilterChange={this.onFilterChange}
-          />
-        </div>
+        <FilterSection
+          filterValues={this.state.filterValues}
+          onFilterChange={this.onFilterChange}
+        />
 
         <div className="app-root__page-content">
           <CitiesList

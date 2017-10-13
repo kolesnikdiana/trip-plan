@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './add-item.css';
+
 const AddItem = ({ onItemAdd, isValid, inputValue, onInputChange, onFocus }) => (
   <div className="add-item-field">
 
