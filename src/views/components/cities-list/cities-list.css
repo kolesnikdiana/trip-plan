@@ -9,10 +9,6 @@
   position: relative;
 }
 
-.cities-list__city_hidden {
-  display: none;
-}
-
 .cities-list__city::after {
   content: '';
 

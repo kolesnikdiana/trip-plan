@@ -1,104 +1,27 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import CitiesList from '../../components/cities-list';
 import AddItem from '../../components/add-item';
 import FilterSection from '../../components/filter-section';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newPlace: '',
-      visited: ['1'],
-      filterValues: {
-        showVisited: true,
-        showUnvisited: true
-      }
-    };
-  }
+const Home = state => (
+  <div>
 
-  onInputChange = (e) => {
-    this.setState({
-      newPlace: e.target.value
-    });
-  };
+    <AddItem onItemAdd={state.onAddPlace} />
 
-  onItemAdd = () => {
-    if (this.state.newPlace.trim().length) {
-      this.props.addCity(this.state.newPlace);
-    }
-    else {
-      this.setState({
-        isValid: false
-      });
-    }
+    <FilterSection
+      filterTag={state.filterTag}
+      onFilterChange={state.onFilterChange}
+    />
 
-    this.setState({ newPlace: '' });
-  };
+    <div className="app-root__page-content">
+      <CitiesList
+        cities={state.cities}
+        onTick={state.onTick}
+      />
+    </div>
 
-  onTick = (e) => {
-    const input = e.target;
-    this.setState(({ visited: prevVisited }) => {
-      return !input.checked ? { visited: prevVisited.filter((elId) => (elId !== input.id)) }
-        : { visited: [...prevVisited, input.id] };
-    });
-  };
-
-  onFilterChange = (e) => {
-    const input = e.target;
-    this.setState({
-      filterValues: { ...this.state.filterValues, [input.id]: input.checked }
-    });
-  };
-
-  validate = () => {
-    this.setState({
-      isValid: true
-    });
-  };
-
-  render() {
-    return (
-      <div>
-
-        <AddItem
-          isValid={this.state.isValid}
-          inputValue={this.state.newPlace}
-          onInputChange={this.onInputChange}
-          onFocus={this.validate}
-          onItemAdd={this.onItemAdd}
-        />
-
-        <FilterSection
-          filterValues={this.state.filterValues}
-          onFilterChange={this.onFilterChange}
-        />
-
-        <div className="app-root__page-content">
-          <CitiesList
-            cities={this.props.cities}
-            onTick={this.onTick}
-            showCities={this.state.filterValues}
-            visitedList={this.state.visited}
-          />
-        </div>
-
-      </div>
-    );
-  }
-}
-
-Home.propTypes = {
-  cities: PropTypes.arrayOf(PropTypes.object),
-  addCity: PropTypes.func.isRequired
-};
-
-Home.defaultProps = {
-  cities: [
-    { id: '1', name: 'London' },
-    { id: '2', name: 'Paris' }
-  ]
-};
+  </div>
+);
 
 export default Home;

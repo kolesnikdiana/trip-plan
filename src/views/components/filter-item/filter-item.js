@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Filter = ({ label, filterOn, onFilterChange }) => {
+import './filter-item.css';
+
+const FilterItem = ({ label, isTurnedOn, toggleFilter }) => {
   const checkboxClassDefault = 'checkbox checkbox_theme_trigger';
 
   return (
@@ -9,14 +11,13 @@ const Filter = ({ label, filterOn, onFilterChange }) => {
 
       <input
         type="checkbox"
-        checked={filterOn}
         id={label}
-        onChange={onFilterChange}
+        onChange={toggleFilter}
       />
 
       <label
         htmlFor={label}
-        className={filterOn ? `${checkboxClassDefault} checkbox_theme_trigger_checked` : checkboxClassDefault}
+        className={isTurnedOn ? `${checkboxClassDefault} checkbox_theme_trigger_checked` : checkboxClassDefault}
       >
         show {label === 'showVisited' ? 'visited' : 'unvisited'} places
       </label>
@@ -25,12 +26,12 @@ const Filter = ({ label, filterOn, onFilterChange }) => {
   );
 };
 
-Filter.propTypes = {
+FilterItem.propTypes = {
   label: PropTypes.string.isRequired,
-  filterOn: PropTypes.bool,
-  onFilterChange: PropTypes.func.isRequired
+  isTurnedOn: PropTypes.bool,
+  toggleFilter: PropTypes.func.isRequired
 };
 
-Filter.defaultProps = { filterOn: true };
+FilterItem.defaultProps = { isTurnedOn: true };
 
-export default Filter;
+export default FilterItem;

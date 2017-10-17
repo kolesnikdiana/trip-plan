@@ -1,46 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+
 import Home from './pages/home';
 
 import './app.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cities: [
-        { id: '1', name: 'London' },
-        { id: '2', name: 'Paris' },
-        { id: '3', name: 'Minsk' },
-        { id: '41', name: 'Barcelona' },
-        { id: '5', name: 'Tokyo' },
-        { id: '6', name: 'Beijing' }
-      ]
-    };
-  }
+const App = () => (
+  <div className="app-root">
 
-  addCity = (name) => {
-    this.state.cities.push({
-      id: (this.state.cities.length + 1).toString(),
-      name
-    });
-  };
+    <div className="header app-root__header">
+      <h1 className="app-root__title">TripPlan</h1>
+    </div>
 
-  render() {
-    return (
-      <div className="app-root">
+    <Home />
 
-        <div className="header app-root__header">
-          <h1 className="app-root__title">TripPlan</h1>
-        </div>
+  </div>
+);
 
-        <Home
-          cities={this.state.cities}
-          addCity={this.addCity}
-        />
+// =====================================
+//  CONNECT
+// -------------------------------------
+const mapStateToProps = state => ({ cities: state.cities });
 
-      </div>
-    );
-  }
-}
-
-export default App;
+export default connect(mapStateToProps, null)(App);

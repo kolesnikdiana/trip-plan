@@ -5,24 +5,3 @@
 
   background-color: #EEE;
 }
-.filter-section__checkbox-container {
-  display: inline-block;
-  margin: 0 30px 10px 0;
-}
-
-.checkbox_theme_trigger {
-  color: #666;
-}
-.checkbox_theme_trigger::after {
-  background-color: #96261E;
-  border-color: #96261E;
-}
-.checkbox_theme_trigger::before {
-  width: 20px;
-}
-.checkbox_theme_trigger_checked::after {
-  left: 10px;
-
-  background-color: #3C891B;
-  border-color: #3C891B;
-}
