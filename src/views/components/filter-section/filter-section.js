@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { filterValues } from '../../../core/filter/actions';
+import filterActions from '../../../core/filter/actions';
 import FilterItem from '../filter-item/';
 
 import './filter-section.css';
@@ -24,13 +24,13 @@ class FilterSection extends Component {
     setTimeout(() => {
       let filterTag;
       if (this.state.showVisited && this.state.showUnvisited) {
-        filterTag = filterValues.SHOW_ALL;
+        filterTag = filterActions.SHOW_ALL;
       } else if (this.state.showVisited) {
-        filterTag = filterValues.SHOW_COMPLETED;
+        filterTag = filterActions.SHOW_COMPLETED;
       } else if (this.state.showUnvisited) {
-        filterTag = filterValues.SHOW_ACTIVE;
+        filterTag = filterActions.SHOW_ACTIVE;
       } else {
-        filterTag = filterValues.HIDE_ALL;
+        filterTag = filterActions.HIDE_ALL;
       }
 
       this.props.onFilterChange(filterTag);

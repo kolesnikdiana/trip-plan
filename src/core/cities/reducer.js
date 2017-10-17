@@ -1,4 +1,4 @@
-import { citiesActionTypes as actionTypes } from './actions';
+import citiesActions from './actions';
 
 const initialCitiesState = [
   { id: '1', name: 'London', isVisited: true },
@@ -11,14 +11,14 @@ const initialCitiesState = [
 
 const citiesReducer = (initialState = initialCitiesState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_PLACE:
+    case citiesActions.ADD_PLACE:
       return [...initialState, {
         id: (initialState.length + 1).toString(),
         name: action.payload.name,
         isVisited: false
       }];
 
-    case actionTypes.TICK_PLACE:
+    case citiesActions.TICK_PLACE:
       return initialState.map((city) => {
         if (city.id === action.payload.id) {
           return {

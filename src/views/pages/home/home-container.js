@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import actionCreators from '../../../core/actions';
-import { filterValues } from '../../../core/filter/actions';
+import filterActions from '../../../core/filter/actions';
 
 import Home from './home';
 
 const getVisibleCities = (cities, filterTag) => {
   switch (filterTag) {
-    case filterValues.SHOW_ALL:
+    case filterActions.SHOW_ALL:
       return cities;
 
-    case filterValues.SHOW_COMPLETED:
+    case filterActions.SHOW_COMPLETED:
       return cities.filter(city => city.isVisited);
 
-    case filterValues.SHOW_ACTIVE:
+    case filterActions.SHOW_ACTIVE:
       return cities.filter(city => !city.isVisited);
 
     default:

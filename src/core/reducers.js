@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import citiesReducer from './cities/cities-reducer';
-import filterReducer from './filter/filter-reducer';
+import citiesReducer from './cities/reducer';
+import filterReducer from './filter/reducer';
 
 const tripPlanReducer = combineReducers({
   cities: citiesReducer,
