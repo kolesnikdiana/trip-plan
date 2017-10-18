@@ -1,7 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
+import type { City as CityType, toggleCity as toggleCityType } from './types';
 
-const CityView = ({ city, onTick }) => {
+type Props = {
+  city: CityType,
+  onTick: toggleCityType
+};
+
+const CityView = ({ city, onTick }: Props): React.Node => {
   const checkboxClassDefault = 'checkbox checkbox_theme_default';
 
   return (
@@ -24,15 +30,6 @@ const CityView = ({ city, onTick }) => {
 
     </li>
   );
-};
-
-CityView.propTypes = {
-  city: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    isVisited: PropTypes.bool
-  }).isRequired,
-  onTick: PropTypes.func.isRequired,
 };
 
 export default CityView;

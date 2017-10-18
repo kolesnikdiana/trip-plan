@@ -1,6 +1,8 @@
+// @flow
 import citiesActions from './actions';
+import type { City as CityType } from '../../views/components/types';
 
-const initialCitiesState = [
+const initialCitiesState: CityType[] = [
   { id: '1', name: 'London', isVisited: true },
   { id: '2', name: 'Paris', isVisited: false },
   { id: '3', name: 'Minsk', isVisited: true },
@@ -9,25 +11,30 @@ const initialCitiesState = [
   { id: '6', name: 'Beijing', isVisited: false }
 ];
 
-const citiesReducer = (initialState = initialCitiesState, action) => {
+const citiesReducer = (
+  initialState: CityType[] = initialCitiesState,
+  action
+): CityType[] | null => {
   switch (action.type) {
     case citiesActions.ADD_PLACE:
-      return [...initialState, {
-        id: (initialState.length + 1).toString(),
-        name: action.payload.name,
-        isVisited: false
-      }];
+      return action.payload ?
+        [...initialState, {
+          id: (initialState.length + 1).toString(),
+          name: action.payload.name,
+          isVisited: false
+        }] : initialState;
 
     case citiesActions.TICK_PLACE:
-      return initialState.map((city) => {
-        if (city.id === action.payload.id) {
-          return {
-            ...city,
-            isVisited: !city.isVisited
-          };
-        }
-        return city;
-      });
+      return action.payload ?
+        initialState.map((city: CityType): CityType => {
+          if (city.id === action.payload.id) {
+            return {
+              ...city,
+              isVisited: !city.isVisited
+            };
+          }
+          return city;
+        }) : initialState;
 
     default:
       return initialState;

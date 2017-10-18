@@ -1,23 +1,32 @@
-import React from 'react';
-
+// @flow
+import * as React from 'react';
+import * as types from '../../components/types';
 import CitiesList from '../../components/cities-list';
 import AddItem from '../../components/add-item';
 import FilterSection from '../../components/filter-section';
 
-const Home = state => (
+type Props = {
+  cities: types.City[],
+  filterTag: string,
+  onTick: types.toggleCity,
+  onAddPlace: types.addCity,
+  onFilterChange: types.changeFilter
+};
+
+const Home = (props: Props): React.Node => (
   <div>
 
-    <AddItem onItemAdd={state.onAddPlace} />
+    <AddItem onItemAdd={props.onAddPlace} />
 
     <FilterSection
-      filterTag={state.filterTag}
-      onFilterChange={state.onFilterChange}
+      filterTag={props.filterTag}
+      onFilterChange={props.onFilterChange}
     />
 
     <div className="app-root__page-content">
       <CitiesList
-        cities={state.cities}
-        onTick={state.onTick}
+        cities={props.cities}
+        onTick={props.onTick}
       />
     </div>
 

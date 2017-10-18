@@ -1,3 +1,4 @@
+// @flow
 const filterActions = {
   SET_FILTER: 'SET_FILTER',
 
@@ -6,7 +7,7 @@ const filterActions = {
   SHOW_COMPLETED: 'FILTER/SHOW_VISITED',
   SHOW_ACTIVE: 'FILTER/SHOW_UNVISITED',
 
-  setFilter: filterTag => ({
+  setFilter: (filterTag: string) => ({
     type: filterActions.SET_FILTER,
     payload: { filterTag }
   })

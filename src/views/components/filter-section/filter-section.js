@@ -1,28 +1,40 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
+
 import filterActions from '../../../core/filter/actions';
+import type { changeFilter } from '../types';
 import FilterItem from '../filter-item/';
 
 import './filter-section.css';
 
-class FilterSection extends Component {
-  constructor(props) {
+type Props = {
+  onFilterChange: changeFilter
+};
+
+type State = {
+  showVisited: boolean,
+  showUnvisited: boolean
+};
+
+class FilterSection extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
-    this.state = {
-      showVisited: true,
-      showUnvisited: true
-    };
     this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
-  handleFilterChange(e) {
+  state = {
+    showVisited: true,
+    showUnvisited: true
+  };
+
+  handleFilterChange(e: SyntheticInputEvent<HTMLInputElement>) {
     e.persist();
     this.setState(({ [e.target.id]: prevState }) => ({ [e.target.id]: !prevState }));
 
     // Wait until state is changed (async)
     setTimeout(() => {
-      let filterTag;
+      let filterTag: string;
       if (this.state.showVisited && this.state.showUnvisited) {
         filterTag = filterActions.SHOW_ALL;
       } else if (this.state.showVisited) {
@@ -37,7 +49,7 @@ class FilterSection extends Component {
     }, 0);
   }
 
-  render() {
+  render(): React.Node {
     return (
       <div className="filter-section">
         <FilterItem
@@ -55,7 +67,5 @@ class FilterSection extends Component {
     );
   }
 }
-
-FilterSection.propTypes = { onFilterChange: PropTypes.func.isRequired };
 
 export default FilterSection;

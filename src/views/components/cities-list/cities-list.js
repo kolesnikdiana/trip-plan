@@ -1,40 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 
+import type { City as CityType, toggleCity as toggleCityType } from '../types';
 import CityView from '../city-view';
 
 import './cities-list.css';
 
-const CitiesList = ({ cities, onTick }) => (
-  <ul className="cities-list">
+type Props = {
+  cities: CityType[],
+  onTick: toggleCityType
+};
 
-    {cities.length ? cities.map(city => (
-      <CityView
-        key={city.id}
-        city={city}
-        onTick={onTick}
-      />
-    )) :
-    <li className="cities-list__city">
-      <span className="warning">Warning: </span>
-      No cities to be displayed
-    </li>
+const CitiesList = ({ cities, onTick }: Props): React.Node => (
+  <ul className="cities-list">
+    {cities !== null && cities.length ?
+      cities.map((city: CityType): React.Element<typeof CityView> => (
+        <CityView
+          key={city.id}
+          city={city}
+          onTick={onTick}
+        />
+      )) :
+      <li className="cities-list__city">
+        <span className="warning">Warning: </span>
+        No cities to be displayed
+      </li>
     }
 
   </ul>
 );
-
-CitiesList.propTypes = {
-  cities: PropTypes.arrayOf(PropTypes.object),
-  onTick: PropTypes.func.isRequired
-};
-
-CitiesList.defaultProps = {
-  cities: [
-    { id: 1, name: 'London' },
-    { id: 2, name: 'Paris' },
-    { id: 3, name: 'Minsk' }
-  ]
-};
 
 export default CitiesList;

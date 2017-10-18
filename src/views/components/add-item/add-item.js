@@ -1,26 +1,37 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
+import type { addCity as addCityType } from '../types';
 
 import './add-item.css';
 
-class AddItem extends Component {
-  constructor(props) {
+type Props = {
+  onItemAdd: addCityType
+};
+
+type State = {
+  value: string,
+  isValid: boolean
+};
+
+class AddItem extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.state = {
-      value: '',
-      isValid: true
-    };
 
     this.validate = this.validate.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
+  state = {
+    value: '',
+    isValid: true
+  };
+
   validate() {
     this.setState({ isValid: true });
   }
 
-  handleChange(e) {
+  handleChange(e: SyntheticInputEvent<HTMLInputElement>) {
     this.setState({ value: e.target.value });
   }
 
@@ -34,7 +45,7 @@ class AddItem extends Component {
     }
   }
 
-  render() {
+  render(): React.Node {
     return (
       <div className="add-item-field">
 
@@ -51,7 +62,10 @@ class AddItem extends Component {
             onFocus={this.validate}
           />
 
-          <button onClick={this.handleClick} className="add-item-field__button" />
+          <button
+            onClick={this.handleClick}
+            className="add-item-field__button"
+          />
 
         </div>
 
@@ -59,7 +73,5 @@ class AddItem extends Component {
     );
   }
 }
-
-AddItem.propTypes = { onItemAdd: PropTypes.func.isRequired };
 
 export default AddItem;
