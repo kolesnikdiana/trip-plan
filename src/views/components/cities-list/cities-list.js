@@ -1,7 +1,10 @@
 // @flow
 import * as React from 'react';
 
-import type { City as CityType, toggleCity as toggleCityType } from '../types';
+import type {
+  City as CityType,
+  toggleCity as toggleCityType
+} from '../../../core/types';
 import CityView from '../city-view';
 
 import './cities-list.css';

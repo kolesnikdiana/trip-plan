@@ -1,17 +1,16 @@
 // @flow
 import * as React from 'react';
 
-import type { changeFilter } from '../types';
+import type { changeFilter } from '../../../core/types';
 import './filter-item.css';
 
 type Props = {
   label: string,
-  isTurnedOn?: boolean,
+  isTurnedOn: boolean,
   toggleFilter: changeFilter
 };
 
-// todo: either make isTurnedOn required or don't connect className with its value
-const FilterItem = ({ label, isTurnedOn = true, toggleFilter }: Props): React.Node => {
+const FilterItem = ({ label, isTurnedOn, toggleFilter }: Props): React.Node => {
   const checkboxClassDefault = 'checkbox checkbox_theme_trigger';
 
   return (

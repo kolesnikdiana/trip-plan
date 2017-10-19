@@ -1,6 +1,6 @@
 // @flow
 import citiesActions from './actions';
-import type { City as CityType } from '../../views/components/types';
+import type { City as CityType } from '../types';
 
 const initialCitiesState: CityType[] = [
   { id: '1', name: 'London', isVisited: true },

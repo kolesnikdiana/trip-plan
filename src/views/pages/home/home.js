@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import * as types from '../../components/types';
+import * as types from '../../../core/types';
 import CitiesList from '../../components/cities-list';
 import AddItem from '../../components/add-item';
 import FilterSection from '../../components/filter-section';

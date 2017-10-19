@@ -34,7 +34,6 @@
     ],
     "comma-dangle": 0,
     "import/no-extraneous-dependencies": 0,
-    "linebreak-style": 0,
     // flow rules
     "flowtype/boolean-style": [
       2,

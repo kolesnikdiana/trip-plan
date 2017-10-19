@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import filterActions from '../../../core/filter/actions';
-import type { changeFilter } from '../types';
+import type { changeFilter } from '../../../core/types';
 import FilterItem from '../filter-item/';
 
 import './filter-section.css';
@@ -27,6 +27,11 @@ class FilterSection extends React.Component<Props, State> {
     showVisited: true,
     showUnvisited: true
   };
+
+  shouldComponentUpdate(_, nextState) {
+    if (nextState !== this.state) return true;
+    return false;
+  }
 
   handleFilterChange(e: SyntheticInputEvent<HTMLInputElement>) {
     e.persist();

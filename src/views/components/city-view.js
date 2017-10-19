@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import type { City as CityType, toggleCity as toggleCityType } from './types';
+import type { City as CityType, toggleCity as toggleCityType } from '../../core/types';
 
 type Props = {
   city: CityType,
@@ -16,7 +16,9 @@ const CityView = ({ city, onTick }: Props): React.Node => {
       <input
         type="checkbox"
         id={city.id}
-        onChange={onTick}
+        value={city.isVisited}
+        onChange={(e: SynteticInputEvent<HTMLInputElement>) =>
+          onTick(e.target.id)}
       />
 
       <label
