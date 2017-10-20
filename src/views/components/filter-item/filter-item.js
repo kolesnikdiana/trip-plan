@@ -10,27 +10,29 @@ type Props = {
   toggleFilter: changeFilter
 };
 
-const FilterItem = ({ label, isTurnedOn, toggleFilter }: Props): React.Node => {
-  const checkboxClassDefault = 'checkbox checkbox_theme_trigger';
+class FilterItem extends React.PureComponent<Props> {
+  render(): React.Node {
+    const checkboxClassDefault = 'checkbox checkbox_theme_trigger';
 
-  return (
-    <div className="filter-section__checkbox-container">
+    return (
+      <div className="filter-section__checkbox-container">
 
-      <input
-        type="checkbox"
-        id={label}
-        onChange={toggleFilter}
-      />
+        <input
+          type="checkbox"
+          id={this.props.label}
+          onChange={this.props.toggleFilter}
+        />
 
-      <label
-        htmlFor={label}
-        className={isTurnedOn ? `${checkboxClassDefault} checkbox_theme_trigger_checked` : checkboxClassDefault}
-      >
-        show {label === 'showVisited' ? 'visited' : 'unvisited'} places
-      </label>
+        <label
+          htmlFor={this.props.label}
+          className={this.props.isTurnedOn ? `${checkboxClassDefault} checkbox_theme_trigger_checked` : checkboxClassDefault}
+        >
+          show {this.props.label === 'showVisited' ? 'visited' : 'unvisited'} places
+        </label>
 
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 export default FilterItem;

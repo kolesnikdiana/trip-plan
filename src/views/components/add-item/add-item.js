@@ -13,10 +13,9 @@ type State = {
   isValid: boolean
 };
 
-class AddItem extends React.Component<Props, State> {
+class AddItem extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.shouldUpdate = false;
 
     this.validate = this.validate.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -28,28 +27,11 @@ class AddItem extends React.Component<Props, State> {
     isValid: true
   };
 
-  shouldComponentUpdate(_, nextState): boolean {
-    if (nextState.isValid === this.state.isValid && nextState.isValid === false) {
-      return false;
-    }
-    if (this.shouldUpdateOnce) {
-      this.shouldUpdateOnce = false;
-      this.shouldUpdate = false;
-      return true;
-    }
-    if (this.shouldUpdate) {
-      return true;
-    }
-    return false;
-  }
-
   validate() {
-    this.shouldUpdateOnce = true;
     this.setState({ isValid: true });
   }
 
   handleChange(e: SyntheticInputEvent<HTMLInputElement>) {
-    this.shouldUpdate = true;
     this.setState({ value: e.target.value });
   }
 
@@ -61,7 +43,6 @@ class AddItem extends React.Component<Props, State> {
     } else {
       this.setState({ isValid: false });
     }
-    this.shouldUpdateOnce = true;
   }
 
   render(): React.Node {
