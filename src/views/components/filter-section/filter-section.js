@@ -1,57 +1,28 @@
 // @flow
 import * as React from 'react';
 
-import filterActions from '../../../core/filter/actions';
-import type { changeFilter } from '../../../core/types';
+import type {
+  changeFilter as changeFilterType,
+  FilterState as FilterStateType } from '../../../core/types';
 import FilterItem from '../filter-item/';
 
 import './filter-section.css';
 
 type Props = {
-  onFilterChange: changeFilter
+  onFilterChange: changeFilterType,
+  filterState: FilterStateType
 };
 
-type State = {
-  showVisited: boolean,
-  showUnvisited: boolean
-};
-
-class FilterSection extends React.Component<Props, State> {
+class FilterSection extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
-  state = {
-    showVisited: true,
-    showUnvisited: true
-  };
-
-  shouldComponentUpdate(_, nextState) {
-    if (nextState !== this.state) return true;
-    return false;
-  }
-
   handleFilterChange(e: SyntheticInputEvent<HTMLInputElement>) {
     e.persist();
-    this.setState(({ [e.target.id]: prevState }) => ({ [e.target.id]: !prevState }));
-
-    // Wait until state is changed (async)
-    setTimeout(() => {
-      let filterTag: string;
-      if (this.state.showVisited && this.state.showUnvisited) {
-        filterTag = filterActions.SHOW_ALL;
-      } else if (this.state.showVisited) {
-        filterTag = filterActions.SHOW_COMPLETED;
-      } else if (this.state.showUnvisited) {
-        filterTag = filterActions.SHOW_ACTIVE;
-      } else {
-        filterTag = filterActions.HIDE_ALL;
-      }
-
-      this.props.onFilterChange(filterTag);
-    }, 0);
+    this.props.onFilterChange({[e.target.id]: !e.target.checked });
   }
 
   render(): React.Node {
@@ -59,13 +30,13 @@ class FilterSection extends React.Component<Props, State> {
       <div className="filter-section">
         <FilterItem
           label="showVisited"
-          isTurnedOn={this.state.showVisited}
+          isTurnedOn={this.props.filterState.showVisited}
           toggleFilter={this.handleFilterChange}
         />
 
         <FilterItem
           label="showUnvisited"
-          isTurnedOn={this.state.showUnvisited}
+          isTurnedOn={this.props.filterState.showUnvisited}
           toggleFilter={this.handleFilterChange}
         />
       </div>
