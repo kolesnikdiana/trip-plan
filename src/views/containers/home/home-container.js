@@ -7,14 +7,15 @@ import filterActions from '../../../core/filter/actions';
 
 import Home from '../../pages/home/home';
 
-const getFilterTag = (state) => state.filterTag;
+
+const getFilterState = (state) => state.filterState;
 
 // =====================================
 //  CONNECT
 // -------------------------------------
 const mapStateToProps = createStructuredSelector({
   cities: createVisibleCitiesSelector,
-  filterTag: getFilterTag
+  filterState: getFilterState
 });
 
 const mapDispatchToProps = {

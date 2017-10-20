@@ -5,6 +5,11 @@ export type City = {
   isVisited: boolean
 };
 
+export type FilterState = {
+  showVisited: boolean,
+  showUnvisited: boolean
+};
+
 // function types
 export type toggleCity = (
   e: SyntheticInputEvent<HTMLInputElement>
@@ -15,6 +20,7 @@ export type addCity = (
 ) => void;
 
 
-export type changeFilter = (
-  tag: string
-) => void;
+export type changeFilter = ({
+  filter: string,
+  value: boolean
+}) => void;

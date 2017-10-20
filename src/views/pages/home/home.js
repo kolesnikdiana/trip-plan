@@ -7,7 +7,7 @@ import FilterSection from '../../components/filter-section';
 
 type Props = {
   cities: types.City[],
-  filterTag: string,
+  filterState: types.FilterState,
   onTick: types.toggleCity,
   onAddPlace: types.addCity,
   onFilterChange: types.changeFilter
@@ -19,7 +19,7 @@ const Home = (props: Props): React.Node => (
     <AddItem onItemAdd={props.onAddPlace} />
 
     <FilterSection
-      filterTag={props.filterTag}
+      filterState={props.filterState}
       onFilterChange={props.onFilterChange}
     />
 

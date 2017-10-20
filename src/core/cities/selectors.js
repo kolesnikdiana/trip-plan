@@ -1,34 +1,28 @@
 // @flow
 import { createSelector } from 'reselect';
-import filterActions from '../filter/actions';
-import { City as CityType } from '../types';
+import {
+  City as CityType,
+  FilterState as FilterStateType
+} from '../types';
 
 const getCities = (state) => state.cities;
-const getFilterTag = (state) => state.filterTag;
+const getFilterState = (state) => state.filterState;
 
 const getVisibleCities = (
   cities: CityType[],
-  filterTag: string
+  filterState: FilterStateType
 ): CityType[] | null => {
-  switch (filterTag) {
-    case filterActions.SHOW_ALL:
-      return cities;
-
-    case filterActions.SHOW_COMPLETED:
-      return cities.filter((city: CityType): boolean =>
-        city.isVisited);
-
-    case filterActions.SHOW_ACTIVE:
-      return cities.filter((city: CityType): boolean =>
-        !city.isVisited);
-
-    default:
-      return [];
+  if (!filterState.showUnvisited && !filterState.showVisited) {
+    return [];
   }
+  return (cities.filter((city: CityType): boolean =>
+    city.isVisited === filterState.showVisited
+    || !city.isVisited === filterState.showUnvisited));
 };
 
+// todo: create selectorCreator -> to don't recalculate visible cities when a city ticked
 const createVisibleCitiesSelector = createSelector(
-  [getCities, getFilterTag],
+  [getCities, getFilterState],
   getVisibleCities
 );
 

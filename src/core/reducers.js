@@ -4,7 +4,7 @@ import filterReducer from './filter/reducer';
 
 const tripPlanReducer = combineReducers({
   cities: citiesReducer,
-  filterTag: filterReducer
+  filterState: filterReducer
 });
 
 export default tripPlanReducer;

@@ -1,16 +1,23 @@
 // @flow
 import filterActions from './actions';
+import type { FilterState as FilterStateType } from '../types';
 
 const filterReducer = (
-  state: string = filterActions.SHOW_ALL,
+  initialState: FilterStateType = {
+    showVisited: true,
+    showUnvisited: true
+  },
   action
-): string => {
+): FilterStateType => {
   switch (action.type) {
     case filterActions.SET_FILTER:
-      return action.payload ? action.payload.filterTag : state;
+      return action.payload ? {
+        ...initialState,
+        ...action.payload.changedFilter
+      } : initialState;
 
     default:
-      return state;
+      return initialState;
   }
 };
 
