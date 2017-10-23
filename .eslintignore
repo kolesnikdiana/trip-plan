@@ -1,0 +1,3 @@
+build/*
+src/views/components/styled-components/**/*.js
+

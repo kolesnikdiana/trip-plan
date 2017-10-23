@@ -2,6 +2,9 @@
 import * as React from 'react';
 import type { City as CityType, toggleCity as toggleCityType } from '../../core/types';
 
+import Checkbox from './styled-components/inputs/input-checkbox';
+import ViewButton from './styled-components/buttons/button-view';
+
 type Props = {
   city: CityType,
   onTick: toggleCityType
@@ -9,27 +12,24 @@ type Props = {
 
 class CityView extends React.PureComponent<Props> {
   render(): React.Node {
-    const checkboxClassDefault = 'checkbox checkbox_theme_default';
-
     return (
-      <li className="cities-list__city">
+      <li>
 
-        <input
-          type="checkbox"
+        <Checkbox.Controller
           id={this.props.city.id}
           value={this.props.city.isVisited}
           onChange={(e: SynteticInputEvent<HTMLInputElement>): void =>
             this.props.onTick(e.target.id)}
         />
 
-        <label
+        <Checkbox.Label
           htmlFor={this.props.city.id}
-          className={this.props.city.isVisited ? `${checkboxClassDefault} checkbox_theme_default_checked` : checkboxClassDefault}
+          checked={this.props.city.isVisited}
         >
           {this.props.city.name}
-        </label>
+        </Checkbox.Label>
 
-        <button className="cities-list__map-view-link">Map view</button>
+        <ViewButton>Map view</ViewButton>
 
       </li>
     );

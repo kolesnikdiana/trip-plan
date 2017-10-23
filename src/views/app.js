@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 
 import Home from './pages/home';
 
-import './app.css';
+import Panel from './components/styled-components/containers/panel';
+import Title from './components/styled-components/title';
 
 const App = () => (
-  <div className="app-root">
+  <div>
 
-    <div className="header app-root__header">
-      <h1 className="app-root__title">TripPlan</h1>
-    </div>
+    <Panel header>
+      <Title>TripPlan</Title>
+    </Panel>
 
     <Home />
 

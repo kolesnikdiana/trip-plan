@@ -1,8 +1,10 @@
 // @flow
 import * as React from 'react';
 
+import { ThemeProvider } from 'styled-components';
+
 import type { changeFilter } from '../../../core/types';
-import './filter-item.css';
+import Trigger, { triggerTheme } from '../styled-components/inputs/trigger';
 
 type Props = {
   label: string,
@@ -12,25 +14,25 @@ type Props = {
 
 class FilterItem extends React.PureComponent<Props> {
   render(): React.Node {
-    const checkboxClassDefault = 'checkbox checkbox_theme_trigger';
-
     return (
-      <div className="filter-section__checkbox-container">
+      <Trigger>
 
-        <input
+        <Trigger.Controller
           type="checkbox"
           id={this.props.label}
           onChange={this.props.toggleFilter}
         />
 
-        <label
-          htmlFor={this.props.label}
-          className={this.props.isTurnedOn ? `${checkboxClassDefault} checkbox_theme_trigger_checked` : checkboxClassDefault}
-        >
-          show {this.props.label === 'showVisited' ? 'visited' : 'unvisited'} places
-        </label>
+        <ThemeProvider theme={triggerTheme}>
+          <Trigger.Label
+            htmlFor={this.props.label}
+            checked={this.props.isTurnedOn}
+          >
+            show {this.props.label === 'showVisited' ? 'visited' : 'unvisited'} places
+          </Trigger.Label>
+        </ThemeProvider>
 
-      </div>
+      </Trigger>
     );
   }
 }

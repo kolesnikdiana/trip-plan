@@ -1,8 +1,10 @@
 // @flow
 import * as React from 'react';
-import type { addCity as addCityType } from '../../../core/types';
 
-import './add-item.css';
+import AddButton from '../styled-components/buttons/button-add';
+import Search from '../styled-components/inputs/input-search';
+
+import type { addCity as addCityType } from '../../../core/types';
 
 type Props = {
   onItemAdd: addCityType
@@ -47,29 +49,22 @@ class AddItem extends React.PureComponent<Props, State> {
 
   render(): React.Node {
     return (
-      <div className="add-item-field">
+      <Search.Container>
 
-        <div className="input-container add-item-field__input-container">
+        <Search.Line
+          id="input-value"
+          placeholder="Add new place to visit"
+          isCorrect={this.state.isValid}
+          value={this.state.value}
+          onChange={this.handleChange}
+          onFocus={this.validate}
+        />
 
-          <input
-            className={!this.state.isValid ? 'add-item-field__input add-item-field__input_incorrect'
-              : 'add-item-field__input'}
-            type="text"
-            id="input-value"
-            placeholder="Add new place to visit"
-            value={this.state.value}
-            onChange={this.handleChange}
-            onFocus={this.validate}
-          />
+        <AddButton
+          onClick={this.handleClick}
+        />
 
-          <button
-            onClick={this.handleClick}
-            className="add-item-field__button"
-          />
-
-        </div>
-
-      </div>
+      </Search.Container>
     );
   }
 }

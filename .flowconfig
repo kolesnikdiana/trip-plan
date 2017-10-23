@@ -1,4 +1,5 @@
 [ignore]
+src/views/components/styled-components/**/*.js
 
 [include]
 ./src/views/components

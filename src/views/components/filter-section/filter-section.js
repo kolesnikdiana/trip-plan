@@ -1,12 +1,16 @@
 // @flow
 import * as React from 'react';
 
-import type {
-  changeFilter as changeFilterType,
-  FilterState as FilterStateType } from '../../../core/types';
 import FilterItem from '../filter-item/';
 
-import './filter-section.css';
+// styled components
+import { SectionDivider } from '../styled-components/containers/sections';
+
+// types definitions
+import type {
+  changeFilter as changeFilterType,
+  FilterState as FilterStateType
+} from '../../../core/types';
 
 type Props = {
   onFilterChange: changeFilterType,
@@ -22,12 +26,12 @@ class FilterSection extends React.PureComponent<Props> {
 
   handleFilterChange(e: SyntheticInputEvent<HTMLInputElement>) {
     e.persist();
-    this.props.onFilterChange({[e.target.id]: !e.target.checked });
+    this.props.onFilterChange({ [e.target.id]: !e.target.checked });
   }
 
   render(): React.Node {
     return (
-      <div className="filter-section">
+      <SectionDivider>
         <FilterItem
           label="showVisited"
           isTurnedOn={this.props.filterState.showVisited}
@@ -39,7 +43,7 @@ class FilterSection extends React.PureComponent<Props> {
           isTurnedOn={this.props.filterState.showUnvisited}
           toggleFilter={this.handleFilterChange}
         />
-      </div>
+      </SectionDivider>
     );
   }
 }

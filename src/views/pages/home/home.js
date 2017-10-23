@@ -1,9 +1,14 @@
 // @flow
 import * as React from 'react';
+
 import * as types from '../../../core/types';
 import CitiesList from '../../components/cities-list';
 import AddItem from '../../components/add-item';
 import FilterSection from '../../components/filter-section';
+
+// styled components
+import Section from '../../components/styled-components/containers/sections';
+import Panel from '../../components/styled-components/containers/panel';
 
 type Props = {
   cities: types.City[],
@@ -15,20 +20,21 @@ type Props = {
 
 const Home = (props: Props): React.Node => (
   <div>
+    <Panel>
+      <AddItem onItemAdd={props.onAddPlace} />
 
-    <AddItem onItemAdd={props.onAddPlace} />
+      <FilterSection
+        filterState={props.filterState}
+        onFilterChange={props.onFilterChange}
+      />
+    </Panel>
 
-    <FilterSection
-      filterState={props.filterState}
-      onFilterChange={props.onFilterChange}
-    />
-
-    <div className="app-root__page-content">
+    <Section>
       <CitiesList
         cities={props.cities}
         onTick={props.onTick}
       />
-    </div>
+    </Section>
 
   </div>
 );

@@ -1,13 +1,14 @@
 // @flow
 import * as React from 'react';
+import CityView from '../city-view';
+
+import WarningLine from '../styled-components/warning';
+import StyledList from '../styled-components/containers/list';
 
 import type {
   City as CityType,
   toggleCity as toggleCityType
 } from '../../../core/types';
-import CityView from '../city-view';
-
-import './cities-list.css';
 
 type Props = {
   cities: CityType[],
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const CitiesList = ({ cities, onTick }: Props): React.Node => (
-  <ul className="cities-list">
+  <StyledList>
     {cities !== null && cities.length ?
       cities.map((city: CityType): React.Element<typeof CityView> => (
         <CityView
@@ -24,13 +25,13 @@ const CitiesList = ({ cities, onTick }: Props): React.Node => (
           onTick={onTick}
         />
       )) :
-      <li className="cities-list__city">
-        <span className="warning">Warning: </span>
+      <li>
+        <WarningLine>Warning: </WarningLine>
         No cities to be displayed
       </li>
     }
 
-  </ul>
+  </StyledList>
 );
 
 export default CitiesList;
