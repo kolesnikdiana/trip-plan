@@ -19,8 +19,11 @@ export type addCity = (
   name: string
 ) => void;
 
-
 export type changeFilter = ({
   filter: string,
   value: boolean
+}) => void;
+
+export type searchOnline = ({
+  value: string
 }) => void;

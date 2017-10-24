@@ -52,9 +52,8 @@ class AddItem extends React.PureComponent<Props, State> {
       <Search.Container>
 
         <Search.Line
-          id="input-value"
           placeholder="Add new place to visit"
-          isCorrect={this.state.isValid}
+          isIncorrect={!this.state.isValid}
           value={this.state.value}
           onChange={this.handleChange}
           onFocus={this.validate}

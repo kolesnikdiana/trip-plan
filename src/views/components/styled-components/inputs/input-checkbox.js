@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Input from './basic';
 
-const Controller = Input.extend
+const Controller = styled(Input)
   .attrs({ type: 'checkbox' })`
     display: none;
   `;

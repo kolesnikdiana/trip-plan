@@ -8,7 +8,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-const Line = Input.extend
+const Line = styled(Input)
  .attrs({ type: 'text' })`  
     padding: 0 40px 0 20px;
     display: block;
@@ -17,8 +17,8 @@ const Line = Input.extend
   
     border-width: 0;
     color: #666;
-    outline: ${props => !props.isCorrect ? '#96261E auto 5px' : ''};
-    outline-offset: ${props => !props.isCorrect ? '-2px' : ''};
+    outline: ${props => props.isIncorrect ? '#96261E auto 5px' : ''};
+    outline-offset: ${props => props.isIncorrect ? '-2px' : ''};
   `;
 
 const Search = {
