@@ -24,9 +24,11 @@ const getVisibleCities = (
 const getSearchResult = (
   visibleCities: CityType[],
   input: string
-): CityType[] | null =>
-  visibleCities.filter((city: CityType): boolean =>
-    city.name.toLowerCase().includes(input.toLowerCase()));
+): CityType[] | null => (
+  input === '' ? visibleCities :
+    visibleCities.filter((city: CityType): boolean =>
+      city.name.toLowerCase().includes(input.toLowerCase()))
+);
 
 // todo: create selectorCreator -> to don't recalculate visible cities when a city ticked
 const createCitiesByFilterSelector = createSelector(
