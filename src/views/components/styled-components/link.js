@@ -4,14 +4,14 @@ const Link = styled.a`
   position: relative;
 
   text-decoration: none;
-  color: #154584;
+  color: ${props => props.theme.color};
   
   &:focus,
   &:active {
     outline: none;
   }
-
-  &::after {
+  
+  &:hover::after {
     content: '';
   
     width: 100%;
@@ -21,8 +21,17 @@ const Link = styled.a`
     bottom: -3px;
     left: 0;
   
-    background-color: #154584;
+    background-color: ${props => props.theme.color};
   }
+
+
 `;
+
+Link.defaultProps = {
+  theme: {
+    color: '#154584',
+    underlined: true
+  }
+};
 
 export default Link;
