@@ -1,6 +1,6 @@
 // @flow
 import { createSelector } from 'reselect';
-import {
+import type {
   City as CityType,
   FilterState as FilterStateType
 } from '../types';

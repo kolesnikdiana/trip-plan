@@ -3,7 +3,7 @@ import * as React from 'react';
 import CityView from '../city-view';
 
 import WarningLine from '../styled-components/warning';
-import StyledList from '../styled-components/containers/list';
+import StyledList from '../styled-components/list';
 
 import type {
   City as CityType,
