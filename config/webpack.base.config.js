@@ -50,6 +50,7 @@ export default new Config().merge({
   devServer: {
     contentBase: folders.build,
     compress: true,
+    historyApiFallback: true,
     port: process.env.NODE_ENV === 'development' ? 9000 : 9900
   }
 });
