@@ -10,9 +10,10 @@ type Props = {
 
 const SearchLine = (props: Props): React.Node => (
   <Search.Line
-    placeholder='Start typing to find the staff'
+    placeholder="Start typing to find the staff"
     onChange={(e: SyntheticInputEvent<HTMLInputElement>) =>
-      props.onSearch(e.target.value)}
+      props.onSearch(e.target.value)
+    }
   />
 );
 

@@ -12,7 +12,8 @@ const Navigation = styled.ul`
 `;
 
 export const NavigationLinkTheme = {
-  color: '#FFF'
+  color: '#FFF',
+  underlined: true
 };
 
 export default Navigation;
