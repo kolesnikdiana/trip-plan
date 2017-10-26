@@ -15,7 +15,7 @@ const Link = styled.a`
     content: '';
   
     width: 100%;
-    height: 1px;
+    height: ${props => props.theme.underlined ? '1px' : 0};
   
     position: absolute;
     bottom: -3px;
@@ -26,6 +26,11 @@ const Link = styled.a`
 
 
 `;
+
+export const LogoTheme = {
+  color: '#FFF',
+  underlined: false
+};
 
 Link.defaultProps = {
   theme: {

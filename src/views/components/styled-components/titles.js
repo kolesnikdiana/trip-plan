@@ -8,4 +8,9 @@ const Title = styled.h1`
   color: white;
 `;
 
+export const Subtitle = styled.h2`
+  margin: 20px 0;
+  text-align: center;
+`;
+
 export default Title;

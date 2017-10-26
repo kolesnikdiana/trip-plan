@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const Section = styled.div`
   max-width: 1920px;
   margin: 0 auto;
+  
+  position: relative;
 `;
 
 export const SectionDivider = Section.extend`

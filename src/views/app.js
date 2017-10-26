@@ -8,16 +8,20 @@ import searchActions from '../core/search/actions';
 
 import Home from './containers/home';
 import Overview from './pages/overview';
-import SearchLine from './components/search-line/search-line';
+import SearchLine from './components/search-line';
 
 import Panel from './components/styled-components/containers/panel';
-import Title from './components/styled-components/title';
+import Title from './components/styled-components/titles';
 import Navigation, { NavigationLinkTheme } from './components/styled-components/navigation';
-import Link from './components/styled-components/link';
+import Link, { LogoTheme } from './components/styled-components/link';
 
-import type { searchOnline } from '../core/types';
+import type {
+  City as CityType,
+  searchOnline
+} from '../core/types';
 
 type Props = {
+  cities: CityType[],
   onSearch: searchOnline
 };
 
@@ -25,17 +29,28 @@ const App = (props: Props) => (
   <div>
 
     <Panel header>
-      <Title>TripPlan</Title>
+      <Title>
+        <Link theme={LogoTheme} href="/">TripPlan</Link>
+      </Title>
+
       <Navigation>
          <li><Link theme={NavigationLinkTheme} href="/">Home</Link></li>
          <li><Link theme={NavigationLinkTheme} href="/overview">Overview</Link></li>
       </Navigation>
+
       <SearchLine
         onSearch={props.onSearch}
       />
     </Panel>
+
     <Route exact path="/" component={Home} />
-    <Route exact path="/overview" component={Overview} />
+    <Route
+      path="/overview"
+      render={(): React.Node =>
+        (<Overview
+          cities={props.cities}
+        />)}
+    />
 
   </div>
 );
