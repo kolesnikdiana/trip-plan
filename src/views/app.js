@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Route, withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import searchActions from '../core/search/actions';
@@ -13,7 +14,7 @@ import SearchLine from './components/search-line';
 import Panel from './components/styled-components/containers/panel';
 import Title from './components/styled-components/titles';
 import Navigation, { NavigationLinkTheme } from './components/styled-components/navigation';
-import Link, { LogoTheme } from './components/styled-components/link';
+import StyledLink, { LogoTheme } from './components/styled-components/link';
 
 import type {
   City as CityType,
@@ -29,15 +30,24 @@ type Props = {
 
 const App = (props: Props): React.Node => (
   <div>
-
     <Panel header>
       <Title>
-        <Link theme={LogoTheme} href="/">TripPlan</Link>
+        <StyledLink theme={LogoTheme}>
+          <Link to="/">TripPlan</Link>
+        </StyledLink>
       </Title>
 
       <Navigation>
-        <li><Link theme={NavigationLinkTheme} href="/">Home</Link></li>
-        <li><Link theme={NavigationLinkTheme} href="/overview">Overview</Link></li>
+        <li>
+          <StyledLink theme={NavigationLinkTheme}>
+            <Link to="/">Home</Link>
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink theme={NavigationLinkTheme}>
+            <Link to="/overview">Overview</Link>
+          </StyledLink>
+        </li>
       </Navigation>
 
       <SearchLine
