@@ -10,9 +10,14 @@ export type FilterState = {
   showUnvisited: boolean
 };
 
+export type SearchLineType = {
+  value: string,
+  focus: boolean
+};
+
 // function types
 export type toggleCity = (
-  string
+  id: string
 ) => void;
 
 export type addCity = (
@@ -20,9 +25,13 @@ export type addCity = (
 ) => void;
 
 export type changeFilter = (
-  string
+  id: string
 ) => void;
 
 export type searchOnline = (
   value: string
+) => void;
+
+export type setFocusState = (
+  boolean
 ) => void;

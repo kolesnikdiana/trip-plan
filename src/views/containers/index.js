@@ -12,6 +12,9 @@ const mapStateToProps = state => ({
   searchLine: state.searchLine
 });
 
-const mapDispatchToProps = { onSearch: searchActions.sortByInput };
+const mapDispatchToProps = {
+  onSearch: searchActions.sortByInput,
+  setFocusState: searchActions.setFocusState
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

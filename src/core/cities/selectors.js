@@ -7,7 +7,7 @@ import type {
 
 const getCities = (state) => state.cities;
 const getFilterState = (state) => state.filterState;
-const getSearchInputState = (state) => state.searchLine;
+const getSearchInputValue = (state) => state.searchLine.value;
 
 const getVisibleCities = (
   cities: CityType[],
@@ -33,7 +33,7 @@ const getSearchResult = (
 export const createCitiesByInputSelector = createSelector(
   [
     getCities,
-    getSearchInputState
+    getSearchInputValue
   ],
   getSearchResult
 );

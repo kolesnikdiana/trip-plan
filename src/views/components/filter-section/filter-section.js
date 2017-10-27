@@ -18,15 +18,8 @@ type Props = {
 };
 
 class FilterSection extends React.PureComponent<Props> {
-  constructor(props: Props) {
-    super(props);
-
-    this.handleFilterChange = this.handleFilterChange.bind(this);
-  }
-
-  handleFilterChange(e: SyntheticInputEvent<HTMLInputElement>) {
+  handleFilterChange = (e: SyntheticInputEvent<HTMLInputElement>): void =>
     this.props.onFilterChange(e.target.id);
-  }
 
   render(): React.Node {
     return (

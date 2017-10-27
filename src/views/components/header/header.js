@@ -13,6 +13,19 @@ import Title from '../styled-components/titles';
 import Navigation, { NavigationLinkTheme } from '../styled-components/navigation';
 import StyledLink, { LogoTheme } from '../styled-components/link';
 
+import type {
+  searchOnline as searchOnlineType,
+  setFocusState as setFocusStateType,
+  SearchLineType
+} from '../../../core/types';
+
+type Props = {
+  pathname: string,
+  searchLine: SearchLineType,
+  onSearch: searchOnlineType,
+  setFocusState: setFocusStateType
+};
+
 const Header = (props: Props): React.Node => (
 
   <Panel header>
@@ -37,10 +50,12 @@ const Header = (props: Props): React.Node => (
 
     <SearchLine
       onSearch={props.onSearch}
+      setFocusState={props.setFocusState}
     />
     {
-      props.location.pathname === '/overview' &&
-      props.searchLine &&
+      props.pathname === '/overview' &&
+      props.searchLine.focus &&
+      props.searchLine.value &&
       <SearchHint />
     }
   </Panel>

@@ -8,21 +8,25 @@ import Header from './components/header';
 
 import type {
   City as CityType,
+  setFocusState as setFocusStateType,
+  SearchLineType,
   searchOnline
 } from '../core/types';
 
 type Props = {
-  location: string,
-  searchLine: string,
+  location: {...mixed},
+  searchLine: SearchLineType,
   cities: CityType[],
-  onSearch: searchOnline
+  onSearch: searchOnline,
+  setFocusState: setFocusStateType
 };
 
 const App = (props: Props): React.Node => (
   <div>
     <Header
-      location={props.location}
+      pathname={props.location.pathname}
       onSearch={props.onSearch}
+      setFocusState={props.setFocusState}
       searchLine={props.searchLine}
     />
 
