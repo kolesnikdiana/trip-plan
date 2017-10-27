@@ -22,26 +22,29 @@ const getVisibleCities = (
 };
 
 const getSearchResult = (
-  visibleCities: CityType[],
+  cities: CityType[],
   input: string
 ): CityType[] | null => (
-  input === '' ? visibleCities :
-    visibleCities.filter((city: CityType): boolean =>
+  input === '' ? cities :
+    cities.filter((city: CityType): boolean =>
       city.name.toLowerCase().includes(input.toLowerCase()))
 );
 
-// todo: create selectorCreator -> to don't recalculate visible cities when a city ticked
-const createCitiesByFilterSelector = createSelector(
-  [getCities, getFilterState],
-  getVisibleCities
-);
-
-const createVisibleCitiesSelector = createSelector(
+export const createCitiesByInputSelector = createSelector(
   [
-    createCitiesByFilterSelector,
+    getCities,
     getSearchInputState
   ],
   getSearchResult
+);
+
+// todo: create selectorCreator -> to don't recalculate visible cities when a city ticked
+const createVisibleCitiesSelector = createSelector(
+  [
+    createCitiesByInputSelector,
+    getFilterState
+  ],
+  getVisibleCities
 );
 
 export default createVisibleCitiesSelector;
