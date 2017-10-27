@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 
+import HintList from '../styled-components/lists/hints';
 import type { City as CityType } from '../../../core/types';
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 };
 
 const SearchHint = ({ cities }: Props): React.Node => (
-  <ul>
+  <HintList>
     {
       cities.length === 0 ?
 
@@ -18,7 +19,7 @@ const SearchHint = ({ cities }: Props): React.Node => (
           <li key={city.id}>{city.name}</li>
         ))
     }
-  </ul>
+  </HintList>
 );
 
 export default SearchHint;

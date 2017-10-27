@@ -9,6 +9,7 @@ const AddButton = styled.button`
   right: -20px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 10;
 
   background-color: #1E5799;
   border-radius: 50%;

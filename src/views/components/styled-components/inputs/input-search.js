@@ -14,6 +14,9 @@ const Line = styled(Input)
     display: block;
     height: 30px;
     width: calc(100% - 60px);
+    
+    position: relative;
+    z-index: 10;
   
     border-width: 0;
     color: #666;
