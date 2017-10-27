@@ -34,6 +34,12 @@ const Overview = ({ cities }: Props): React.Node => {
             Theme.visitedPortionTheme : Theme.unVisitedPortionTheme}
           size={360 * (Math.min(visitedCount, remainingCount) / allCount)}
         />
+        {
+          remainingCount === 0 &&
+          <Diagram.Message>
+            Congratulations! You&#39;ve visited all places from the list!!
+          </Diagram.Message>
+        }
       </Diagram>
 
       <Diagram.Label>

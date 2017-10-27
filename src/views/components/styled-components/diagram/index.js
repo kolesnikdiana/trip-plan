@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import * as Label from './label';
+import Message from './message';
 import defaultTheme from './themes';
 
 const Diagram = styled.div`
@@ -40,6 +41,7 @@ Diagram.defaultProps =
   Portion.defaultProps = defaultTheme;
 
 Diagram.Portion = Portion;
+Diagram.Message = Message;
 Diagram.Label = Label.Wrapper;
 Diagram.Line = Label.Line;
 
