@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import StyledList from './default-list';
 
 const HintList = StyledList.extend`
@@ -17,5 +18,12 @@ const HintList = StyledList.extend`
     padding-bottom: 5px;
   }
 `;
+
+const Item = styled.li`
+  color: ${props => props.checked ? '#666' : ''};
+  text-decoration: ${props => props.checked ? 'line-through' : ''};
+`;
+
+HintList.Item = Item;
 
 export default HintList;

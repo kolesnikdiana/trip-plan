@@ -16,7 +16,7 @@ const SearchHint = ({ cities }: Props): React.Node => (
         <li>No items to be displayed</li> :
 
         cities.map((city: CityType): React.Node => (
-          <li key={city.id}>{city.name}</li>
+          <HintList.Item key={city.id} checked={city.isVisited}>{city.name}</HintList.Item>
         ))
     }
   </HintList>
