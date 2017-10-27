@@ -12,16 +12,16 @@ export type FilterState = {
 
 // function types
 export type toggleCity = (
-  e: SyntheticInputEvent<HTMLInputElement>
+  string
 ) => void;
 
 export type addCity = (
   name: string
 ) => void;
 
-export type changeFilter = ({
-  [string]: boolean
-}) => void;
+export type changeFilter = (
+  string
+) => void;
 
 export type searchOnline = (
   value: string

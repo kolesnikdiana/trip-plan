@@ -25,8 +25,7 @@ class FilterSection extends React.PureComponent<Props> {
   }
 
   handleFilterChange(e: SyntheticInputEvent<HTMLInputElement>) {
-    e.persist();
-    this.props.onFilterChange({ [e.target.id]: !e.target.checked });
+    this.props.onFilterChange(e.target.id);
   }
 
   render(): React.Node {

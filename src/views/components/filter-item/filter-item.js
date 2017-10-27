@@ -20,6 +20,7 @@ class FilterItem extends React.PureComponent<Props> {
         <Trigger.Controller
           type="checkbox"
           id={this.props.label}
+          checked={this.props.isTurnedOn}
           onChange={this.props.toggleFilter}
         />
 
