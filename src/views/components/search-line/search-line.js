@@ -15,7 +15,8 @@ type Props = {
 const SearchLine = (props: Props): React.Node => (
   <Search.Line
     placeholder="Start typing to find the staff"
-    onBlur={(): void => props.setFocusState(false)}
+    onBlur={(): void => setTimeout(() =>
+      props.setFocusState(false), 250)}
     onFocus={(): void => props.setFocusState(true)}
     onChange={(e: SyntheticInputEvent<HTMLInputElement>): void =>
       props.onSearch(e.target.value)

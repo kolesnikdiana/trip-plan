@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 // @flow
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
-import HintList from '../styled-components/lists/hints';
+import HintList, { hintLinkTheme } from '../styled-components/lists/hints';
 import type { City as CityType } from '../../../core/types';
 
 type Props = {
@@ -9,17 +11,26 @@ type Props = {
 };
 
 const SearchHint = ({ cities }: Props): React.Node => (
-  <HintList>
-    {
-      cities.length === 0 ?
+  <div>
+    <HintList>
+      {
+        cities.length === 0 ?
 
-        <li>No items to be displayed</li> :
+          <li>No items to be displayed</li> :
+          cities.map((city: CityType): React.Node => (
+            <li key={city.id}>
+              <HintList.Link
+                checked={city.isVisited}
+                theme={hintLinkTheme}
+              >
+                <Link to={`/details/${city.id}`}>{city.name}</Link>
+              </HintList.Link>
+            </li>
+          ))
+      }
+    </HintList>
+  </div>
 
-        cities.map((city: CityType): React.Node => (
-          <HintList.Item key={city.id} checked={city.isVisited}>{city.name}</HintList.Item>
-        ))
-    }
-  </HintList>
 );
 
 export default SearchHint;

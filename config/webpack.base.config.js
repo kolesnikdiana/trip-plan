@@ -19,7 +19,7 @@ export default new Config().merge({
     path: folders.build,
     publicPath: 'js'
   },
-  devtool: process.env.NODE_ENV === 'development' ? 'source-map' : '',
+  devtool: process.env.NODE_ENV === 'development' ? 'source-details' : '',
   module: {
     loaders: [
       {

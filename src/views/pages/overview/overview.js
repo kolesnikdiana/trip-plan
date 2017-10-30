@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 
-import { SectionDivider } from '../../components/styled-components/containers/sections';
+// styled components
+import { InnerPage } from '../../components/styled-components/containers/sections';
 import { Subtitle } from '../../components/styled-components/titles';
 import Diagram from '../../components/styled-components/diagram';
 import * as Theme from '../../components/styled-components/diagram/themes';
@@ -14,12 +15,12 @@ type Props = {
 
 const Overview = ({ cities }: Props): React.Node => {
   const allCount = cities.length;
-  const visitedCount = cities.filter((city: CityType) =>
+  const visitedCount = cities.filter((city: CityType): void =>
     city.isVisited).length;
   const remainingCount = allCount - visitedCount;
 
   return (
-    <SectionDivider>
+    <InnerPage>
       <Subtitle>
         All places: {allCount}
       </Subtitle>
@@ -56,7 +57,7 @@ const Overview = ({ cities }: Props): React.Node => {
 
       </Diagram.Label>
 
-    </SectionDivider>
+    </InnerPage>
   );
 };
 

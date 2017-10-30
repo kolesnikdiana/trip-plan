@@ -11,4 +11,8 @@ export const SectionDivider = Section.extend`
   padding-top: 20px;
 `;
 
+export const InnerPage = Section.extend`
+  padding: 20px 3% 0;
+`;
+
 export default Section;

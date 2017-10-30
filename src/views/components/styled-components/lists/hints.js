@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import StyledList from './default-list';
+import Link from '../link';
 
 const HintList = StyledList.extend`
   box-sizing: border-box;
@@ -19,11 +20,17 @@ const HintList = StyledList.extend`
   }
 `;
 
-const Item = styled.li`
-  color: ${props => props.checked ? '#666' : ''};
-  text-decoration: ${props => props.checked ? 'line-through' : ''};
+const Item = Link.extend`
+  a {
+    color: ${props => props.checked ? '#666' : '#3c3c3c'};
+    text-decoration: ${props => props.checked ? 'line-through' : ''};
+  }
 `;
 
-HintList.Item = Item;
+export const hintLinkTheme = {
+  underlined: false
+};
+
+HintList.Link = Item;
 
 export default HintList;

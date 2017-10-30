@@ -4,6 +4,7 @@ import { Route } from 'react-router';
 
 import Home from './containers/home';
 import Overview from './pages/overview';
+import Details from './pages/details';
 import Header from './components/header';
 
 import type {
@@ -14,7 +15,7 @@ import type {
 } from '../core/types';
 
 type Props = {
-  location: {...mixed},
+  location: { ...mixed },
   searchLine: SearchLineType,
   cities: CityType[],
   onSearch: searchOnline,
@@ -39,6 +40,7 @@ const App = (props: Props): React.Node => (
         />
       )}
     />
+    <Route path="/details" component={Details} />
 
   </div>
 );

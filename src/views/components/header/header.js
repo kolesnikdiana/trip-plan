@@ -53,9 +53,8 @@ const Header = (props: Props): React.Node => (
       setFocusState={props.setFocusState}
     />
     {
-      props.pathname === '/overview' &&
+      props.pathname !== '/' &&
       props.searchLine.focus &&
-      props.searchLine.value &&
       <SearchHint />
     }
   </Panel>

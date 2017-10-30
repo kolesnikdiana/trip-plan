@@ -7,7 +7,6 @@ import filterActions from '../../../core/filter/actions';
 
 import Home from '../../pages/home';
 
-
 const getFilterState = (state) => state.filterState;
 
 // =====================================
