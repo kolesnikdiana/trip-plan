@@ -16,28 +16,17 @@ type State = {
 };
 
 class AddItem extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.validate = this.validate.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
   state = {
     value: '',
     isValid: true
   };
 
-  validate() {
-    this.setState({ isValid: true });
-  }
+  validate = (): void => this.setState({ isValid: true });
 
-  handleChange(e: SyntheticInputEvent<HTMLInputElement>) {
+  handleChange = (e: SyntheticInputEvent<HTMLInputElement>): void =>
     this.setState({ value: e.target.value });
-  }
 
-  handleClick() {
+  handleClick = () => {
     const name = this.state.value;
     if (name.trim().length) {
       this.props.onItemAdd(name);
@@ -45,7 +34,7 @@ class AddItem extends React.PureComponent<Props, State> {
     } else {
       this.setState({ isValid: false });
     }
-  }
+  };
 
   render(): React.Node {
     return (

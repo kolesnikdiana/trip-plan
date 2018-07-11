@@ -1,13 +1,13 @@
 // @flow
 import { createSelector } from 'reselect';
-import {
+import type {
   City as CityType,
   FilterState as FilterStateType
 } from '../types';
 
 const getCities = (state) => state.cities;
 const getFilterState = (state) => state.filterState;
-const getSearchInputState = (state) => state.searchLine;
+const getSearchInputValue = (state) => state.searchLine.value;
 
 const getVisibleCities = (
   cities: CityType[],
@@ -22,26 +22,29 @@ const getVisibleCities = (
 };
 
 const getSearchResult = (
-  visibleCities: CityType[],
+  cities: CityType[],
   input: string
 ): CityType[] | null => (
-  input === '' ? visibleCities :
-    visibleCities.filter((city: CityType): boolean =>
+  input === '' ? cities :
+    cities.filter((city: CityType): boolean =>
       city.name.toLowerCase().includes(input.toLowerCase()))
 );
 
-// todo: create selectorCreator -> to don't recalculate visible cities when a city ticked
-const createCitiesByFilterSelector = createSelector(
-  [getCities, getFilterState],
-  getVisibleCities
-);
-
-const createVisibleCitiesSelector = createSelector(
+export const createCitiesByInputSelector = createSelector(
   [
-    createCitiesByFilterSelector,
-    getSearchInputState
+    getCities,
+    getSearchInputValue
   ],
   getSearchResult
+);
+
+// todo: create selectorCreator -> to don't recalculate visible cities when a city ticked
+const createVisibleCitiesSelector = createSelector(
+  [
+    createCitiesByInputSelector,
+    getFilterState
+  ],
+  getVisibleCities
 );
 
 export default createVisibleCitiesSelector;

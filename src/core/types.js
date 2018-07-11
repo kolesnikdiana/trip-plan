@@ -10,20 +10,28 @@ export type FilterState = {
   showUnvisited: boolean
 };
 
+export type SearchLineType = {
+  value: string,
+  focus: boolean
+};
+
 // function types
 export type toggleCity = (
-  e: SyntheticInputEvent<HTMLInputElement>
+  id: string
 ) => void;
 
 export type addCity = (
   name: string
 ) => void;
 
-export type changeFilter = ({
-  filter: string,
-  value: boolean
-}) => void;
+export type changeFilter = (
+  id: string
+) => void;
 
-export type searchOnline = ({
+export type searchOnline = (
   value: string
-}) => void;
+) => void;
+
+export type setFocusState = (
+  boolean
+) => void;

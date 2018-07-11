@@ -5,8 +5,7 @@ import createVisibleCitiesSelector from '../../../core/cities/selectors';
 import citiesActions from '../../../core/cities/actions';
 import filterActions from '../../../core/filter/actions';
 
-import Home from '../../pages/home/home';
-
+import Home from '../../pages/home';
 
 const getFilterState = (state) => state.filterState;
 

@@ -13,7 +13,7 @@ const filterReducer = (
     case filterActions.SET_FILTER:
       return action.payload ? {
         ...initialState,
-        ...action.payload.changedFilter
+        [action.payload.id]: !initialState[action.payload.id]
       } : initialState;
 
     default:

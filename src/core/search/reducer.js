@@ -1,16 +1,29 @@
 // @flow
-
 import searchActions from '../search/actions';
-import store from '../store';
+import type { SearchLineType } from '../types';
 
 const searchReducer = (
-  initialState: string = '',
+  initialState: SearchLineType =
+  {
+    value: '',
+    focus: false
+  },
   action
 ): string => {
   switch (action.type) {
     case searchActions.SORT_BY_INPUT:
       return action.payload ?
-        action.payload.input : initialState;
+        {
+          ...initialState,
+          value: action.payload.input
+        } : initialState;
+
+    case searchActions.SET_FOCUS_STATE:
+      return action.payload ?
+        {
+          ...initialState,
+          focus: action.payload.state
+        } : initialState;
 
     default:
       return initialState;

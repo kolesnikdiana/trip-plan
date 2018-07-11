@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "history": "^4.7.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.8",
     "redux": "^3.7.2",
     "reselect": "^3.0.1",
     "styled-components": "^2.2.1"
@@ -41,7 +45,7 @@
     "webpack-dev-server": "2.8.2"
   },
   "scripts": {
-    "start": "set NODE_ENV=development&& webpack&& webpack-dev-server --progress --color",
+    "start": "set NODE_ENV=development&& webpack&& webpack-dev-server --progress --color --open",
     "build": "set NODE_ENV=production&& webpack&& webpack-dev-server --progress --color",
     "extends": "airbnb",
     "flow": "flow"

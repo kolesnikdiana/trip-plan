@@ -1,34 +1,48 @@
+// @flow
 import React from 'react';
-import { connect } from 'react-redux';
+import { Route } from 'react-router';
 
-import searchActions from '../core/search/actions';
+import Home from './containers/home';
+import Overview from './pages/overview';
+import Details from './pages/details';
+import Header from './components/header';
 
-import Home from './pages/home';
+import type {
+  City as CityType,
+  setFocusState as setFocusStateType,
+  SearchLineType,
+  searchOnline
+} from '../core/types';
 
-import Panel from './components/styled-components/containers/panel';
-import Title from './components/styled-components/title';
-import SearchLine from './components/search-line/search-line';
+type Props = {
+  location: { ...mixed },
+  searchLine: SearchLineType,
+  cities: CityType[],
+  onSearch: searchOnline,
+  setFocusState: setFocusStateType
+};
 
-const App = props => (
+const App = (props: Props): React.Node => (
   <div>
+    <Header
+      pathname={props.location.pathname}
+      onSearch={props.onSearch}
+      setFocusState={props.setFocusState}
+      searchLine={props.searchLine}
+    />
 
-    <Panel header>
-      <Title>TripPlan</Title>
-      <SearchLine
-        onSearch={props.onSearch}
-      />
-    </Panel>
-
-    <Home />
+    <Route exact path="/" component={Home} />
+    <Route
+      path="/overview"
+      render={(): React.Node => (
+        <Overview
+          cities={props.cities}
+        />
+      )}
+    />
+    <Route path="/details" component={Details} />
 
   </div>
 );
 
-// =====================================
-//  CONNECT
-// -------------------------------------
-const mapStateToProps = state => ({ cities: state.cities });
-
-const mapDispatchToProps = { onSearch: searchActions.sortByInput };
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
